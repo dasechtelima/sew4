@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TestFunctions</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>Test my functions</h1>
+<div class="row">
+    <label>
+        RGB to HEX:
+        <input type="number" id="rgbToHexR" placeholder="put 'r' value">
+        <input type="number" id="rgbToHexG" placeholder="put 'g' value">
+        <input type="number" id="rgbToHexB" placeholder="put 'b' value">
+        <button type="button" id="submit_rgbToHex">Submit</button>
+        <input id="output_rgbToHex" hidden>
+    </label>
+</div>
+<br>
+<div class="row">
+    <label>
+        RGB-Function to HEX:
+        <input type="text" id="rgbFunctionToHex" placeholder="put 'rgb' value">
+        <button type="button" id="submit_rgbFunctionToHex">Submit</button>
+        <input id="output_rgbFunctionToHex" hidden>
+    </label>
+</div>
+<br>
+<div class="row">
+    <label>
+        HEX to RGB:
+        <input type="text" id="hexToRGB" placeholder="hex value">
+        <label for="isPercentage">
+            <input type="checkbox" id="isPercentage">
+            in percentage
+        </label>
+        <button type="button" id="submit_hexToRGB">Submit</button>
+        <input id="output_hexToRGB" hidden>
+    </label>
+</div>
+<script src="JavaScript-Modules.mjs"></script>
+<script>
+    document.getElementById("submit_rgbToHex").addEventListener("click", function () {
+        const r = document.getElementById("rgbToHexR").value;
+        const g = document.getElementById("rgbToHexG").value;
+        const b = document.getElementById("rgbToHexB").value;
+        const output_rgbToHex = document.getElementById("output_rgbToHex");
+        console.log(r)
+        const color = rgbToHex(parseInt(r), parseInt(g), parseInt(b));
+        console.log(color)
+        output_rgbToHex.removeAttribute("hidden");
+        output_rgbToHex.value = color;
+        document.body.style.background = color;
+    });
+    document.getElementById("submit_rgbFunctionToHex").addEventListener("click", function () {
+        const rgb = document.getElementById("rgbFunctionToHex").value;
+        const output_rgbFunctionToHex = document.getElementById("output_rgbFunctionToHex");
+        const color = rgbFunctionToHex(rgb);
+        output_rgbFunctionToHex.removeAttribute("hidden");
+        output_rgbFunctionToHex.value = color;
+        document.body.style.background = color;
+    });
+    document.getElementById("submit_hexToRGB").addEventListener("click", function () {
+        const hex = document.getElementById("hexToRGB").value;
+        const isPercentage = document.getElementById("isPercentage").checked;
+        const output_hexToRGB = document.getElementById("output_hexToRGB");
+        const color = hexToRgb(hex, isPercentage);
+        output_hexToRGB.removeAttribute("hidden");
+        output_hexToRGB.value = color;
+        document.body.style.background = color;
+    });
+</script>
+</body>
+</html>
