@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+    --fuchsia-pink-50: #fbf7fc;
+    --fuchsia-pink-100: #f7eef9;
+    --fuchsia-pink-200: #eedcf2;
+    --fuchsia-pink-300: #e1c0e7;
+    --fuchsia-pink-400: #cf9bd7;
+    --fuchsia-pink-500: #b163bc;
+    --fuchsia-pink-600: #9e53a6;
+    --fuchsia-pink-700: #824388;
+    --fuchsia-pink-800: #6c3870;
+    --fuchsia-pink-900: #5b325d;
+    --fuchsia-pink-950: #39173b;
+    --primary-color: var(--fuchsia-pink-500);
+    --secondary-color: var(--fuchsia-pink-300);
+    --font-color: var(--fuchsia-pink-950);
+
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+
+    color: var(--font-color);
+    background-color: var(--secondary-color);
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    place-items: center;
+    min-width: 320px;
+    min-height: 100vh;
+}
+
+#app {
+    max-width: 90vw;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+input {
+    height: 50px;
+    width: 200px;
+
+    border: var(--primary-color);
+    border-style: solid;
+    border-radius: 15px;
+
+    text-align: center;
+    font-family: inherit;
+    font-weight: 500;
+    color: inherit;
+}
+
+p#errorMessage {
+    color: red;
+}
