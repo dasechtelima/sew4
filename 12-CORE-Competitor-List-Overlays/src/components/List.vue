@@ -2,12 +2,18 @@
 import CompetitorEntry from './CompetitorEntry.vue'
 import {useCompetitorStore} from "@/stores/competitor.js";
 import {ref} from 'vue';
+import CompetitorOverlay from "@/components/CompetitorOverlay.vue";
 
 const competitorStore = useCompetitorStore();
 const competitors = competitorStore.competitors;
 const firstnameInput = ref('');
 const lastnameInput = ref('');
 const rankInput = ref('');
+const showCompetitorOverlay = ref(false);
+
+function toggleCompetitorOverlay() {
+  showCompetitorOverlay.value = !showCompetitorOverlay.value;
+}
 
 function addCompetitor() {
   try {
@@ -17,6 +23,7 @@ function addCompetitor() {
       rank: rankInput.value,
       newRank: null
     });
+    toggleCompetitorOverlay()
   } catch (error) {
     console.error(error.message);
   }
@@ -35,10 +42,21 @@ function updateRank(competitor) {
 </script>
 
 <template>
-  <input type="text" placeholder="firstname" v-model="firstnameInput">
-  <input type="text" placeholder="lastname" v-model="lastnameInput">
-  <input type="number" placeholder="rank" v-model="rankInput">
-  <button @click="addCompetitor">Add competitor</button>
+  <button @click="toggleCompetitorOverlay">Add competitor</button>
+  <CompetitorOverlay :show="showCompetitorOverlay">
+    <template #firstname>
+      <input type="text" placeholder="firstname" v-model="firstnameInput">
+    </template>
+    <template #lastname>
+      <input type="text" placeholder="lastname" v-model="lastnameInput">
+    </template>
+    <template #rank>
+      <input type="number" placeholder="rank" v-model="rankInput">
+    </template>
+    <template #buttonAddCompetitor>
+      <button @click="addCompetitor()">Add competitor</button>
+    </template>
+  </CompetitorOverlay>
   <div v-for="competitor in competitors" :key="competitor.id">
     <CompetitorEntry :competitor="competitor">
       <template #rank> {{ competitor.rank }}</template>
@@ -54,5 +72,6 @@ function updateRank(competitor) {
 <style scoped>
 input {
   margin-right: 10px;
+  margin-bottom: 10px;
 }
 </style>
