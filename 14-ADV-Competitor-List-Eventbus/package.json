@@ -10,9 +10,11 @@
     "test": "vitest"
   },
   "dependencies": {
+    "mitt": "^3.0.1",
     "pinia": "^2.1.7",
     "uuid": "^9.0.1",
     "vue": "^3.4.21",
+    "vue-plugin-event-bus": "^0.0.5",
     "vue-router": "^4.3.0"
   },
   "devDependencies": {

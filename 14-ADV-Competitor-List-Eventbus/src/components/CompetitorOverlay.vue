@@ -1,9 +1,11 @@
 <template>
   <div class="overlay" v-if="show">
     <div class="overlay-content">
-      <h3>Put down your idea!</h3>
-      <slot name="heading"></slot>
-      <slot name="text"></slot>
+      <h3>Enter a competitor!</h3>
+      <slot name="firstname"></slot>
+      <slot name="lastname"></slot>
+      <slot name="rank"></slot>
+      <slot name="buttonAddCompetitor"></slot>
     </div>
   </div>
 </template>
@@ -44,5 +46,4 @@ defineProps({
 h3 {
   margin-bottom: 20px;
 }
-
 </style>
